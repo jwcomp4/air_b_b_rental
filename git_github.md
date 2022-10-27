@@ -48,3 +48,8 @@
 	For a detailed tutorial on Git and GitHub refer to this Real Python article:
 
 	[Git/GitHub Real Python](https://realpython.com/python-git-github-intro/)
+
+	## GitHub Branch Merge Schedule
+
+	- We will merge branches on Monday, Wednesday, and Friday at 8a Central Time.
+	- Make sure to perform a `git pull` after each merge *before you start working on the project*
