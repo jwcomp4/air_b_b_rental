@@ -12,15 +12,16 @@
 + Build draft of the Machine Learning Model
 + Connect to Database and use sample data
 + Upload code to Machine Learning branch 
++ Clean Dataset
+    - Drop Columns: "host_id", "host_name", "neighbourhood_group", "calculated_host_listings_count", "license".
+    - Remove rows whose last review is 01/01/2022 or earlier
 
 &nbsp;
 
 ### **Database - _Erin Neubauer_**
 + Use starter AirBnB data for database baseline
     - ERDs
-+ Clean Dataset
-    - Drop Columns: "host_id", "host_name", "neighbourhood_group", "calculated_host_listings_count", "license".
-    - Remove rows whos last review is 12/31/2019 or earlier
++ Merge Datasets
 + Connect Database to Machine Learning model.  
 + Upload code to Database branch
 
