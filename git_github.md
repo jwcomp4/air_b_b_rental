@@ -12,7 +12,7 @@
 
 - Steps for using git/GitHub
 	1. Navigate to our GitHub repo and clone it to your machine using `git clone <repo URL>`
-	[Air BnB Repo](https://github.com/jwcomp4/airbnb_renta)
+	[Air BnB Repo](https://github.com/jwcomp4/airbnb_rental)
 
 	2. Note that this will put the most recent updates onto your machine, but every other time you must first pull from the GitHub repo to update files on your computer
 		- Simply navigate to the apporpriate directory on your machine and use the `git pull` command in Terminal or Bash.
