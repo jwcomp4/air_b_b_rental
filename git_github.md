@@ -51,5 +51,10 @@
 
 	## GitHub Branch Merge Schedule
 
+
 	- We will merge branches on Monday, Wednesday, and Friday at 8a Central Time.
+	
+		* John will review changes before merging.
+		* If there are any issues, team members will be contacted via Slack to make any necessary edits.
+
 	- Make sure to perform a `git pull` after each merge *before you start working on the project*
