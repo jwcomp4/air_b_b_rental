@@ -1,3 +1,4 @@
+
 ## Segment #2 Breakdown of Tasks:
 
 ### **GitHub - _John Compton_**
@@ -29,4 +30,5 @@
 ### **Dashboard - _Colt Korth_**
 + Google Slides Storyboard
 + Discriptoion of tools to use (Image)
+
 
