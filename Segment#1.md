@@ -1,3 +1,4 @@
+
 ## Segment #1 Breakdown of Tasks:
 
 ### **GitHub - _John Compton_**
@@ -31,4 +32,3 @@
 + Update README on project goals, updates, and team's responsiblities 
 + Design a basic visual outline of project's flow
 + Set up team communication through slack, zoom, and google docs
-
