@@ -17,7 +17,7 @@
 ## Research Questions to Answer:
 1. What is the greatest factor in price between listed AirBnBs?
 
-2. What whould be a competitve price for a new host user, given data they enter about their rental space?
+2. What would be a competitve price for a new host user, given data they enter about their rental space?
 
 &nbsp;
 
