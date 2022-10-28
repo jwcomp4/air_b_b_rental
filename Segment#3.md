@@ -1,3 +1,4 @@
+
 ## Segment #3 Breakdown of Tasks:
 
 ### **GitHub - _[MemeberName]_**
@@ -17,3 +18,4 @@
 
 ### **Presentation - _[MemeberName]_**
 + 
+

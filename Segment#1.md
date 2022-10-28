@@ -1,3 +1,4 @@
+
 ## Segment #1 Breakdown of Tasks:
 
 ### **GitHub - _John Compton_**
@@ -14,13 +15,14 @@
 + Upload code to Machine Learning branch 
 + Clean Dataset
     - Drop Columns: "host_id", "host_name", "neighbourhood_group", "calculated_host_listings_count", "license".
-    - Remove rows whos last review is 12/31/2019 or earlier
+    - Remove rows whose last review is 01/01/2022 or earlier
 
 &nbsp;
 
 ### **Database - _Erin Neubauer_**
 + Use starter AirBnB data for database baseline
     - ERDs
++ Merge Datasets
 + Connect Database to Machine Learning model.  
 + Upload code to Database branch
 
@@ -30,4 +32,3 @@
 + Update README on project goals, updates, and team's responsiblities 
 + Design a basic visual outline of project's flow
 + Set up team communication through slack, zoom, and google docs
-
