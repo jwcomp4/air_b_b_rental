@@ -11,7 +11,7 @@
 ## Project Description/Outline:
 + Users will be able to enter in their potentially new rental space and receive a competitive price to list at. 
 + Users can view/fiter the overall Nashville listings for Nashville TN
-+ Currently using a linear regression because our target feature (Airbnb price) is a continuous variable.
++ Currently using a regression model because our target feature (Airbnb price) is a continuous variable.
 + Preprocessing has involved the following:
     - Deleting listings without reviews in the current year.
     - Drop columns unnecessary for machine learning model: 
