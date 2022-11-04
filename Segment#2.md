@@ -13,18 +13,18 @@
 + Explain ML Model Choice.
     - Using a regression model because our target feature (price) is a continuous variable.
 + Preliminary data cleaning to run machine learning model.
-+ Preliminary EDA on Air BnB price data.
-+ Preliminary EDA on Air BnB review data.
++ Preliminary EDA on Airbnb price data.
++ Preliminary EDA on Airbnb review data.
     - Ultimately dropped using review data for ML and shifted to number of bedrooms
 + Preliminary visualizations to locate outliers.
-+ Please reference Deliverable2_MachineLearningMockup.ipynb in GitHub.
++ Please reference Deliverable2_MachineLearningMockup_randomforestregressor.ipynb in GitHub.
 
 &nbsp;
 
 ### **Database - _Erin Neubauer_**
 + Build SQL tables using pgAdmin.
 + Create the ERD using Lucidchart.
-+ Upload data from [Inside AirBnb](http://insideairbnb.com/get-the-data/) into the PostgreSQL database
++ Upload data from [Inside Airbnb](http://insideairbnb.com/get-the-data/) into the PostgreSQL database
 + Connect to ML Model.
 
 &nbsp;
