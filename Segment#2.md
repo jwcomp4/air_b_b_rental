@@ -17,6 +17,7 @@
 + Preliminary EDA on Air BnB review data.
     - Ultimately dropped using review data for ML and shifted to number of bedrooms
 + Preliminary visualizations to locate outliers.
++ Please reference Deliverable2_MachineLearningMockup.ipynb in GitHub.
 
 &nbsp;
 
