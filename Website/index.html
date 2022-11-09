@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>160 Pixel Left Column, Single Main Column.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
+<link rel="stylesheet" type="text/css" href="styles.css" >
+<link rel="stylesheet" href="static/CSS/styles.css">
+</head>
+<body>
+<div id="doc" class="yui-t1">
+  <!-- Top banner --->
+  <div class="container" id="hd">
+    <img src="static/Images/Skyline.jpg" alt="banner" style="width:100%;">
+    <div class="centered" id="header"><h1><a>Nashville Airbnbs</a></h1></div>
+  </div>
+  <div id="bd">
+    <div id="yui-main">
+      <!-- Interactive Chart -->
+      <div class="yui-b">
+        <div class="content">Chart Goes Here</div>
+        <!-- pulls data from script source below --->
+      </div>
+    </div>
+    <div class="yui-b">
+      <!-- Filter -->
+      <div id="secondary">
+        <p>Filter Search</p>
+          <div id="filter">
+            <ul class="list-group bg-dark", style="list-style: none;">
+              <li class="list-group-item bg-dark">
+                <label form="date">Neighborhood</label>
+                <input type="text" class="selection" placeholder="Antioch" />
+              </li>
+              <li class="list-group-item bg-dark">
+                <label>Type</label>
+                <input type="text" class="selection" placeholder="Apt/House/Hotel"/>
+              </li>
+              <li class="list-group-item bg-dark">
+                <label>Number of Rooms</label>
+                <input type="text" class="selection" placeholder="1-5" />
+              </li>
+              <li class="list-group-item bg-dark">
+                <label>Price</label>
+                <input type="text" class="selection" placeholder="$0.00" />
+              </li>
+            </ul>
+          </div>
+      </div>
+      <!--Link to data (placeholder data below)-->
+      <script src="static/js/data.js"></script>
+      <script src="static/js/app.py"></script> 
+    </div>
+  </div>
+  <div id="ft">
+    <!-- Provides Clickable link to next page --> 
+    <div id="footer">Link to Price Predictor</div>
+  </div>
+</div>
+</body>
+</html>
