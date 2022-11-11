@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>1 Column - fw-4-1-col</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" type="text/css" href="static/CSS/styles2.css" />
+</head>
+<body>
+<!-- Begin Wrapper -->
+<div id="wrapper">
+  <!-- Begin Header -->
+  <img src="static/Images/Skyline.jpg" alt="banner" style="width:100%;">
+  <div class="centered" id="header"><h1>Airbnb Price Predictor</h1></div>
+  <!-- End Header -->
+  <!-- Begin Naviagtion -->
+  <div id="navigation"><b> How To Guide </b> 
+    <p id="explanation"> Enter in the information of your upcoming Airbnb in Nashville TN and click the "Submit" button. Our system will process your information and inform you of a accurate price point to list your Airbnb.</p>
+  </div>
+  <!-- End Naviagtion -->
+  <!-- Begin Content -->
+  <div id="content">
+    <div id="filter">
+        <form method="POST" action="../Website_edit/static/JS/predictor.js" onsubmit="return getUserInput()">
+            <ul class="list">
+                <li class="object_neighborhood">
+                    <label for="neighborhood">Neighborhood:</label>
+                    <select name="neighborhood" id="neighborhood">
+                        <option value="District 1">District 1</option>
+                        <option value="District 2">District 2</option>
+                        <option value="District 3">District 3</option>
+                        <option value="District 4">District 4</option>
+                        <option value="District 5">District 5</option>
+                        <option value="District 6">District 6</option>
+                        <option value="District 7">District 7</option>
+                        <option value="District 8">District 8</option>
+                        <option value="District 9">District 9</option>
+                        <option value="District 10">District 10</option>
+                        <option value="District 11">District 11</option>
+                        <option value="District 12">District 12</option>
+                        <option value="District 13">District 13</option>
+                        <option value="District 14">District 14</option>
+                        <option value="District 15">District 15</option>
+                        <option value="District 16">District 16</option>
+                        <option value="District 17">District 17</option>
+                        <option value="District 18">District 18</option>
+                        <option value="District 19">District 19</option>
+                        <option value="District 20">District 20</option>
+                        <option value="District 21">District 21</option>
+                        <option value="District 22">District 22</option>
+                        <option value="District 23">District 23</option>
+                        <option value="District 24">District 24</option>
+                        <option value="District 25">District 25</option>
+                        <option value="District 26">District 26</option>
+                        <option value="District 27">District 27</option>
+                        <option value="District 28">District 28</option>
+                        <option value="District 29">District 29</option>
+                        <option value="District 30">District 30</option>
+                        <option value="District 31">District 31</option>
+                        <option value="District 32">District 32</option>
+                    </select>
+                </li>
+                <li class="object_room_type">
+                    <label for="Room Type">Room Type:</label>
+                    <select name="room_type" id="room_type">
+                        <option value="private_room">Private room</option>
+                        <option value="entire_home">Entire home/apt</option>
+                        <option value="hotel">Hotel room</option>
+                        <option value="shared">Shared room</option>
+                    </select>
+                </li>
+                <li class="object_bed_rooms">
+                    <label>Number of Bedrooms:</label>
+                    <input id="bed_rooms" type="text" maxlength="2" class="selection" placeholder="0" />
+                </li>
+                <li class="object_accommodates">
+                    <label>Accommodates:</label>
+                    <input id="accommodates" type="text" maxlength="2" class="selection" placeholder="0" />
+                </li>
+                <script src="../Website_edit/static/JS/predictor.js">
+                    //save list results as variables
+                    function getUserInput() {
+                        var neighborhoodField = document.getElementById('neighborhood').value;
+                        var room_typeField = document.getElementById('Room Type').value;
+                        var bed_roomsField = document.getElementById('bed_rooms').value;
+                        var accommodatesField = document.getElementById('accommodates').value;
+        
+                        if (bed_roomsField.length < 1 || accommodatesField.length < 1) {
+                            result.textContent = 'Number of Bedrooms and Accommodates must contain a number';
+                            //alert('Number of Bedrooms and Accommodates must contain a number');
+                        } else { 
+                            return alert("it works")
+                        }
+                    }
+        
+                    //activate ML file
+        
+                    //send results to webpage
+                        //alert("The target price for your Airbnb should be" + [ML_result])
+        
+                </script>
+            <p>&nbsp</p>
+            <!-- Add a button to activate scraping script -->
+            <button onclick="getUserInput()">Submit</button>
+            </ul>
+        </form>
+    </div>
+  </div>
+  <!-- End Content -->
+  <!-- Begin Footer -->
+  <div id="footer"><a href="Main_Page"> Back to Main Page </a></div>
+  <!-- End Footer -->
+ </div>
+<!-- End Wrapper -->
+</body>
+</html>
