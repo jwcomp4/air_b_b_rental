@@ -22,41 +22,6 @@ df = sqlio.read_sql_query(query,engine)
 
 # Creating district DataFrames
 districts = [{'label': district, 'value': district} for district in sorted(df['neighbourhood'].unique())]
-# district_01 = df.loc[(df['neighbourhood']== 'District 1')]
-# district_02 = df.loc[(df['neighbourhood']== 'District 2')]
-# district_03 = df.loc[(df['neighbourhood']== 'District 3')]
-# district_04 = df.loc[(df['neighbourhood']== 'District 4')]
-# district_05 = df.loc[(df['neighbourhood']== 'District 5')]
-# district_06 = df.loc[(df['neighbourhood']== 'District 6')]
-# district_07 = df.loc[(df['neighbourhood']== 'District 7')]
-# district_08 = df.loc[(df['neighbourhood']== 'District 8')]
-# district_09 = df.loc[(df['neighbourhood']== 'District 9')]
-# district_10 = df.loc[(df['neighbourhood']== 'District 10')]
-# district_11 = df.loc[(df['neighbourhood']== 'District 11')]
-# district_12 = df.loc[(df['neighbourhood']== 'District 12')]
-# district_13 = df.loc[(df['neighbourhood']== 'District 13')]
-# district_14 = df.loc[(df['neighbourhood']== 'District 14')]
-# district_15 = df.loc[(df['neighbourhood']== 'District 15')]
-# district_16 = df.loc[(df['neighbourhood']== 'District 16')]
-# district_17 = df.loc[(df['neighbourhood']== 'District 17')]
-# district_18 = df.loc[(df['neighbourhood']== 'District 18')]
-# district_19 = df.loc[(df['neighbourhood']== 'District 19')]
-# district_20 = df.loc[(df['neighbourhood']== 'District 20')]
-# district_21 = df.loc[(df['neighbourhood']== 'District 21')]
-# district_22 = df.loc[(df['neighbourhood']== 'District 22')]
-# district_23 = df.loc[(df['neighbourhood']== 'District 23')]
-# district_24 = df.loc[(df['neighbourhood']== 'District 24')]
-# district_25 = df.loc[(df['neighbourhood']== 'District 25')]
-# district_26 = df.loc[(df['neighbourhood']== 'District 26')]
-# district_27 = df.loc[(df['neighbourhood']== 'District 27')]
-# district_28 = df.loc[(df['neighbourhood']== 'District 28')]
-# district_29 = df.loc[(df['neighbourhood']== 'District 29')]
-# district_30 = df.loc[(df['neighbourhood']== 'District 30')]
-# district_31 = df.loc[(df['neighbourhood']== 'District 31')]
-# district_32 = df.loc[(df['neighbourhood']== 'District 32')]
-# district_33 = df.loc[(df['neighbourhood']== 'District 33')]
-# district_34 = df.loc[(df['neighbourhood']== 'District 34')]
-# district_35 = df.loc[(df['neighbourhood']== 'District 35')]
 
 # Mapbox:
 
@@ -66,6 +31,8 @@ px.set_mapbox_access_token(mapbox_token)
 app = Dash(__name__, external_stylesheets = [dbc.themes.SLATE])
 mytitle = dcc.Markdown(children="# Airbnb Rental Project")
 airbnb_map = dcc.Graph(id = 'map', figure={})
+price_rev_scatter = dcc.Graph(id = 'scatter_plot', figure ={})
+bedroom_heatmap = dcc.Graph(id = 'heatmap', figure = {})
 dropdown = dcc.Dropdown(id='district_dropdown', options=districts,
 value = "District 19",
 clearable = False)
@@ -82,6 +49,12 @@ app.layout = dbc.Container([
     dbc.Row([
         dbc.Col(id='map_col', width=12)
     ]),
+    dbc.Row([
+        dbc.Col([price_rev_scatter], width=12)
+    ], justify='center'), 
+    dbc.Row([
+        dbc.Col([bedroom_heatmap], width=12)
+    ], justify='center')
 ], fluid=True)
 
 # Setting up the Callback
@@ -116,6 +89,41 @@ def update_map(district):
     #     fig.update_layout(title = 'Airbnb Rentals')
 
     return dcc.Graph(figure=fig)
+
+@app.callback(
+    Output('scatter_plot', 'figure'),
+    Input('district_dropdown', 'value')
+)
+def update_scatter(district):
+    df_sub = df[df.neighbourhood == district]
+
+    fig_2 = px.scatter(df_sub,
+        x = df_sub['review_scores_rating'],
+        y = df_sub['sep_price'],
+        labels ={'review_scores_rating':'Review Score', 'sep_price':'Price' },
+        color = df_sub['property_type'],
+        symbol = df_sub['property_type'],
+        hover_data = ['sep_price', 'review_scores_rating', 'bedrooms']
+    )
+
+    fig_2.update_layout(title="Price and Review Score Comparison")
+    return fig_2
+
+@app.callback(
+    Output('heatmap', 'figure'),
+    Input('district_dropdown', 'value')
+)
+def update_heatmap(district):
+    df_sub = df[df.neighbourhood == district] 
+
+    fig_3 = px.density_heatmap(df_sub, 
+    x = 'bedrooms',
+    y = 'review_scores_rating',
+    text_auto=True,
+    labels = {'review_scores_rating':'Review', 'bedrooms': 'Bedrooms'})
+
+    return fig_3
+
 # Run app
 if __name__=='__main__':
     app.run_server(debug=True, port=8054)
