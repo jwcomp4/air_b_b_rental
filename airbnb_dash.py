@@ -33,9 +33,12 @@ mytitle = dcc.Markdown(children="# Airbnb Rental Project")
 airbnb_map = dcc.Graph(id = 'map', figure={})
 price_rev_scatter = dcc.Graph(id = 'scatter_plot', figure ={})
 bedroom_heatmap = dcc.Graph(id = 'heatmap', figure = {})
+quarter_scatter = dcc.Graph(id = 'quarter', figure = {})
 dropdown = dcc.Dropdown(id='district_dropdown', options=districts,
 value = "District 19",
 clearable = False)
+quarter_dropdown = dcc.Dropdown(id='quarter_drop', options = df.columns[10:14],
+value = 'sep_price')
 
 # Customizing the Dash app layout
 
@@ -54,7 +57,13 @@ app.layout = dbc.Container([
     ], justify='center'), 
     dbc.Row([
         dbc.Col([bedroom_heatmap], width=12)
-    ], justify='center')
+    ], justify='center'),
+    dbc.Row([
+        dbc.Col([quarter_dropdown], width = 12)
+    ], justify = 'center'),
+    dbc.Row([
+        dbc.Col([quarter_scatter], width = 12)
+    ], justify = 'center')
 ], fluid=True)
 
 # Setting up the Callback
@@ -123,6 +132,14 @@ def update_heatmap(district):
     labels = {'review_scores_rating':'Review', 'bedrooms': 'Bedrooms'})
 
     return fig_3
+
+# @app.callback(
+#     Output('quarter', 'figure'),
+#     Input('district_dropdown', 'value'),
+#     Input('quarter_drop', 'value')
+# )
+# def update_quarter(district, quarter):
+#     df_sub = df[(df.neighbourhood == district] 
 
 # Run app
 if __name__=='__main__':
