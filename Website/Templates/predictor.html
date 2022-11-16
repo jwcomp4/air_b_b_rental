@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Airbnb Price Predictor</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" type="text/css" href="../static/CSS/styles.css" />
+</head>
+<body> 
+<!-- Begin Wrapper -->
+<div id="wrapper">
+  <!-- Begin Header -->
+  <img src="../static/Images/Skyline.jpg" alt="banner" style="width:100%;">
+  <div class="centered" id="header"><h1>Airbnb Price Predictor</h1></div>
+  <!-- End Header -->
+  <!-- Begin Naviagtion -->
+  <div id="navigation"><b> How To Guide </b> 
+    <p id="explanation"> Enter in the information of your upcoming Airbnb in Nashville TN and click the "Submit" button. Our system will process your information and inform you of a accurate price point to list your Airbnb.</p>
+  </div>
+  <!-- End Naviagtion -->
+  <!-- Begin Content -->
+  <div id="content">
+    <div id="filter">
+        <div>
+            <ul class="list">
+                <li class="object_neighborhood">
+                    <label for="neighborhood">Neighborhood:</label>
+                    <select name="neighborhood" id="neighborhood">
+                        <option value="District 1">District 1</option>
+                        <option value="District 2">District 2</option>
+                        <option value="District 3">District 3</option>
+                        <option value="District 4">District 4</option>
+                        <option value="District 5">District 5</option>
+                        <option value="District 6">District 6</option>
+                        <option value="District 7">District 7</option>
+                        <option value="District 8">District 8</option>
+                        <option value="District 9">District 9</option>
+                        <option value="District 10">District 10</option>
+                        <option value="District 11">District 11</option>
+                        <option value="District 12">District 12</option>
+                        <option value="District 13">District 13</option>
+                        <option value="District 14">District 14</option>
+                        <option value="District 15">District 15</option>
+                        <option value="District 16">District 16</option>
+                        <option value="District 17">District 17</option>
+                        <option value="District 18">District 18</option>
+                        <option value="District 19">District 19</option>
+                        <option value="District 20">District 20</option>
+                        <option value="District 21">District 21</option>
+                        <option value="District 22">District 22</option>
+                        <option value="District 23">District 23</option>
+                        <option value="District 24">District 24</option>
+                        <option value="District 25">District 25</option>
+                        <option value="District 26">District 26</option>
+                        <option value="District 27">District 27</option>
+                        <option value="District 28">District 28</option>
+                        <option value="District 29">District 29</option>
+                        <option value="District 30">District 30</option>
+                        <option value="District 31">District 31</option>
+                        <option value="District 32">District 32</option>
+                        <option value="District 33">District 33</option>
+                        <option value="District 34">District 34</option>
+                        <option value="District 35">District 35</option>
+                    </select>
+                </li>
+                <li class="object_room_type">
+                    <label for="room_type">Room Type:</label>
+                    <select name="room_type" id="room_type">
+                        <option value="private_room">Private room</option>
+                        <option value="entire_home">Entire home/apt</option>
+                        <option value="hotel">Hotel room</option>
+                        <option value="shared">Shared room</option>
+                    </select>
+                </li>
+                <li class="object_bed_rooms">
+                    <label>Number of Bedrooms:</label>
+                    <input id="bed_rooms" type="number" maxlength="2" class="selection" placeholder="0" />
+                </li>
+                <li class="object_accommodates">
+                    <label>Accommodates:</label>
+                    <input id="accommodates" type="number" maxlength="2" class="selection" placeholder="0" />
+                </li>
+                <script type="text/javascript">
+
+                    //converts neighborhood string to number to use in formula
+                    function neighborhoodConvert(neighborhoodField) {
+
+                        if (neighborhoodField == "District 1"){
+                            neighborhoodField = 220.73; }
+                        else if (neighborhoodField == "District 2") {
+                            neighborhoodField = 288.00; }
+                        else if (neighborhoodField == "District 3") {
+                            neighborhoodField = 191.06; }
+                        else if (neighborhoodField == "District 4") {
+                            neighborhoodField = 171.79; }
+                        else if (neighborhoodField == "District 5") {
+                            neighborhoodField = 287.32; }
+                        else if (neighborhoodField == "District 6") {
+                            neighborhoodField = 225.84; }
+                        else if (neighborhoodField == "District 7") {
+                            neighborhoodField = 192.09; }
+                        else if (neighborhoodField == "District 8") {
+                            neighborhoodField = 172.20; }
+                        else if (neighborhoodField == "District 9") {
+                            neighborhoodField = 135.29; }
+                        else if (neighborhoodField == "District 10") {
+                            neighborhoodField = 191.08; }
+                        else if (neighborhoodField == "District 11") {
+                            neighborhoodField = 245.31; }
+                        else if (neighborhoodField == "District 12") {
+                            neighborhoodField = 87.59; }
+                        else if (neighborhoodField == "District 13") {
+                            neighborhoodField = 168.55; }
+                        else if (neighborhoodField == "District 14") {
+                            neighborhoodField = 161.98; }
+                        else if (neighborhoodField == "District 15") {
+                            neighborhoodField = 193.33; }
+                        else if (neighborhoodField == "District 16") {
+                            neighborhoodField = 162.72; }
+                        else if (neighborhoodField == "District 17") {
+                            neighborhoodField = 335.44; }
+                        else if (neighborhoodField == "District 18") {
+                            neighborhoodField = 297.64; }
+                        else if (neighborhoodField == "District 19") {
+                            neighborhoodField = 367.00; }
+                        else if (neighborhoodField == "District 20") {
+                            neighborhoodField = 438.71; }
+                        else if (neighborhoodField == "District 21") {
+                            neighborhoodField = 336.61; }
+                        else if (neighborhoodField == "District 22") {
+                            neighborhoodField = 161.37; }
+                        else if (neighborhoodField == "District 23") {
+                            neighborhoodField = 257.83; }
+                        else if (neighborhoodField == "District 24") {
+                            neighborhoodField = 241.14; }
+                        else if (neighborhoodField == "District 25") {
+                            neighborhoodField = 230.53; }
+                        else if (neighborhoodField == "District 26") {
+                            neighborhoodField = 173.66; }
+                        else if (neighborhoodField == "District 27") {
+                            neighborhoodField = 145.31; }
+                        else if (neighborhoodField == "District 28") {
+                            neighborhoodField = 122.15; }
+                        else if (neighborhoodField == "District 29") {
+                            neighborhoodField = 131.82; }
+                        else if (neighborhoodField == "District 30") {
+                            neighborhoodField = 147.76; }
+                        else if (neighborhoodField == "District 31") {
+                            neighborhoodField = 86.38; }
+                        else if (neighborhoodField == "District 32") {
+                            neighborhoodField = 130.73; }
+                        else if (neighborhoodField == "District 33") {
+                            neighborhoodField = 132.20; }
+                        else if (neighborhoodField == "District 34") {
+                            neighborhoodField = 219.53; }
+                        else if (neighborhoodField == "District 35") {
+                            neighborhoodField = 154.43; }
+                        else {
+                            //Tester
+                            alert ("Error: neighborhoodField");
+                        }
+                        return neighborhoodField;
+                    }
+
+                    //converts room_type string to number to use in formula
+                    function room_typeConvert(room_typeField) {
+
+                        if (room_typeField == "private_room"){
+                            room_typeField = 1.2; }
+                        else if (room_typeField == "entire_home") {
+                            room_typeField = 1.9; }
+                        else if (room_typeField == "hotel") {
+                            room_typeField = 1.7; }
+                        else if (room_typeField == "shared") {
+                            room_typeField = 1.4; }
+                        else {
+                            alert ("Error room_typeField");
+                        }
+
+                        return room_typeField;
+                    }
+
+                    function getUserInput() { 
+                            //Pull user input into variables
+                            var neighborhoodField = document.getElementById('neighborhood').value;
+                            var room_typeField = document.getElementById('room_type').value;
+                            var bed_roomsField = document.getElementById('bed_rooms').value;
+                            var accommodatesField = document.getElementById('accommodates').value;
+                            
+                            //convert the string variables into numbers
+                            let x = neighborhoodConvert(neighborhoodField);
+                            let y = room_typeConvert(room_typeField);
+                            
+                            //Place holder formula to calculate price
+
+                            // var price = (x+(y*((accommodatesField/2)+(bed_roomsField*5))));
+
+                            let price1 = bed_roomsField*5;
+                            let price2 = accommodatesField/2;
+                            let price3 = price1+price2;
+                            let price4 = y*price3;
+                            let price5 = x+price4;
+
+                            //Makes a pop up for the user to see the results of their input.
+                            alert("A good starting price for your Airbnb is $" + price5);
+
+                            //Tester popup to see the variables to make sure formula is correct. 
+                            // alert(x + " | " + y + " | " + price1 + " | " + price2 + " | " + price3 + " | " + price4 + " | " + price5);
+                    }
+                    //Test the popup funtion
+                    function popup(){
+                        alert("Working?");
+                    }
+                </script>
+            <p>&nbsp</p>
+            <!-- Add a button to activate script -->
+            <button onclick="getUserInput()">Submit</button>
+            </ul>
+        </div>
+    </div>
+  </div>
+  <!-- End Content -->
+
+  <!-- Begin Footer 
+     <div id="footer"><a href="Main_Page"> Back to Main Page </a></div>
+   End Footer -->
+ </div>
+
+<!-- End Wrapper -->
+</body>
+</html>
