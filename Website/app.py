@@ -5,7 +5,7 @@ app = Flask(__name__)
 @app.route("/")
 def predictor():
 
-   return render_template("../Website/predictor.html")
+   return render_template("predictor.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
