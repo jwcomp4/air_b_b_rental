@@ -238,19 +238,27 @@ def update_quarter(district):
 
     fig_4 = px.scatter(df_sub2,
     x = df_sub2['sep_price'],
-    y = df_sub2['sep_number_of_reviews'])
+    y = df_sub2['sep_number_of_reviews'],
+    marginal_x='box',
+    marginal_y='violin')
 
     fig_5 = px.scatter(df_sub2,
     x = df_sub2['jun_price'],
-    y = df_sub2['jun_number_of_reviews'])
+    y = df_sub2['jun_number_of_reviews'],
+    marginal_x='box',
+    marginal_y='violin')
 
     fig_6 = px.scatter(df_sub2,
     x = df_sub2['mar_price'],
-    y = df_sub2['mar_number_of_reviews'])
+    y = df_sub2['mar_number_of_reviews'],
+    marginal_x='box',
+    marginal_y='violin')
 
     fig_7 = px.scatter(df_sub2,
     x = df_sub2['dec_price'],
-    y = df_sub2['dec_number_of_reviews'])
+    y = df_sub2['dec_number_of_reviews'],
+    marginal_x='box',
+    marginal_y='violin')
 
     return fig_4, fig_5, fig_6, fig_7
 
