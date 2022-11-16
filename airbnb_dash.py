@@ -2,7 +2,7 @@
 
 from sqlalchemy import create_engine
 from config import db_password, mapbox_token
-from dash import Dash, dcc, Output, Input
+from dash import Dash, dcc, Output, Input, html
 import dash_bootstrap_components as dbc
 import plotly.express as px
 import pandas as pd
@@ -29,16 +29,115 @@ px.set_mapbox_access_token(mapbox_token)
 
 # Building out Dash components:
 app = Dash(__name__, external_stylesheets = [dbc.themes.SLATE])
+
+card_main = dbc.Card(
+    [
+    dbc.CardBody(
+        [
+        html.H4("Visualization Parameters", className="card-title"),
+        html.H6("Select your options:", className='class-subtitle'),
+        dcc.Dropdown(id='district_dropdown', options= districts, value ='District 19', clearable = False, style = {"color": "#000000"})
+        ]
+    )
+    ],
+    color = 'dark',
+    inverse = 'False',
+    outline = 'False')
+
+card_heatmap = dbc.Card(
+    [
+    dbc.CardBody(
+        [
+        html.H6("Heatmap of Bedroom Count and Review Score", className="card-title"),
+        dcc.Graph(id='heatmap', figure={})
+        ]
+    )
+    ],
+    color='secondary',
+    inverse=True
+)
+
+card_map = dbc.Card(
+    [
+    dbc.CardBody(
+        [
+        html.H4("Map of Airbnb Rentals in Nashville", className='card-title'),
+        html.H6("Colors correspond with city district", className='class-subtitle'),
+        dcc.Graph(id='map', figure={})
+        ]
+    )
+    ],
+    color='info',
+    inverse=True
+)
+card_review_scatter = dbc.Card(
+    [
+    dbc.CardBody(
+        [
+        html.H6("Heatmap of Bedroom Count and Review Score", className='card-title'),
+        dcc.Graph(id='scatter_plot', figure={})
+        ]
+    )
+    ],
+    color='secondary',
+    inverse=True
+)
+
+card_sep_scatter = dbc.Card(
+    [
+    dbc.CardBody(
+        [
+        html.H6("September Prices and Number of Reviews", className='card-title'),
+        dcc.Graph(id='sep_scatter', figure={})
+        ]
+    )
+    ], 
+    color = 'info',
+    inverse = True
+    )
+
+card_jun_scatter = dbc.Card(
+    [
+    dbc.CardBody(
+        [
+        html.H6("June Prices and Number of Reviews", className='card-title'),
+        dcc.Graph(id='jun_scatter', figure={})
+        ]
+    )
+    ], 
+    color = 'info',
+    inverse = True
+    )
+
+card_mar_scatter = dbc.Card(
+    [
+    dbc.CardBody(
+        [
+        html.H6("March Prices and Number of Reviews", className='card-title'),
+        dcc.Graph(id='mar_scatter', figure={})
+        ]
+    )
+    ], 
+    color = 'info',
+    inverse = True
+    )
+
+card_dec_scatter = dbc.Card(
+    [
+    dbc.CardBody(
+        [
+        html.H6("December Prices and Number of Reviews", className='card-title'),
+        dcc.Graph(id='dec_scatter', figure={})
+        ]
+    )
+    ], 
+    color = 'info',
+    inverse = True
+    )
+
 mytitle = dcc.Markdown(children="# Airbnb Rental Project")
-airbnb_map = dcc.Graph(id = 'map', figure={})
-price_rev_scatter = dcc.Graph(id = 'scatter_plot', figure ={})
-bedroom_heatmap = dcc.Graph(id = 'heatmap', figure = {})
-quarter_scatter = dcc.Graph(id = 'quarter', figure = {})
-dropdown = dcc.Dropdown(id='district_dropdown', options=districts,
-value = "District 19",
-clearable = False)
-quarter_dropdown = dcc.Dropdown(id='quarter_drop', options = df.columns[10:14],
-value = 'sep_price')
+
+# quarter_scatter = dcc.Graph(id = 'quarter', figure = {})
 
 # Customizing the Dash app layout
 
@@ -47,57 +146,47 @@ app.layout = dbc.Container([
         dbc.Col([mytitle], width=6)
     ], justify='center'),
     dbc.Row([
-        dbc.Col([dropdown], width=6)
+        dbc.Col([card_main], width=3),
+        dbc.Col([card_map], width=8)
+    ], justify='left'),
+    dbc.Row([
+        dbc.Col([card_heatmap], width=5),
+        dbc.Col([card_review_scatter], width=6)
     ], justify='center'),
+
     dbc.Row([
-        dbc.Col(id='map_col', width=12)
-    ]),
-    dbc.Row([
-        dbc.Col([price_rev_scatter], width=12)
-    ], justify='center'), 
-    dbc.Row([
-        dbc.Col([bedroom_heatmap], width=12)
-    ], justify='center'),
-    dbc.Row([
-        dbc.Col([quarter_dropdown], width = 12)
+        dbc.Col([card_sep_scatter], width = 5),
+        dbc.Col([card_jun_scatter], width = 5)
     ], justify = 'center'),
+    
     dbc.Row([
-        dbc.Col([quarter_scatter], width = 12)
+        dbc.Col([card_mar_scatter], width = 5),
+        dbc.Col([card_dec_scatter], width = 5)
     ], justify = 'center')
 ], fluid=True)
 
-# Setting up the Callback
+# Setting up the Callbacks
+
+# Map callback:
 @app.callback(
-    Output('map_col', 'children'),
+    Output('map', 'figure'),
     Input('district_dropdown', 'value')
 )
 def update_map(district):
 
     df_sub = df[df.neighbourhood == district]
+    df_sub.reset_index(inplace=True)
 
-    fig = px.scatter_mapbox(df_sub,
-        lat = df_sub['latitude'],
-        lon = df_sub['longitude'])
-    # if district == "District 1":
-    #     fig = px.scatter_mapbox(district_01,
-    #         lat = district_01['latitude'],
-    #         lon = district_01['longitude'],
-    #         color = district_01['beds'])
-    #     fig.update_layout(title = 'Airbnb Rentals')
-    # elif district == "District 2":
-    #     fig = px.scatter_mapbox(district_02,
-    #         lat = district_02['latitude'],
-    #         lon = district_02['longitude'],
-    #         color = district_02['beds'])
-    #     fig.update_layout(title = 'Airbnb Rentals')
-    # else:
-    #     fig = px.scatter_mapbox(district_19,
-    #         lat = district_19['latitude'],
-    #         lon = district_19['longitude'], 
-    #         color = district_19['beds'])
-    #     fig.update_layout(title = 'Airbnb Rentals')
+    fig = px.scatter_mapbox(df,
+        lat = df['latitude'],
+        lon = df['longitude'],
+        color = df['neighbourhood'],
+        hover_data = df_sub[['property_type', 'accommodates', 'bedrooms', 'beds']],
+        center = {'lat':df_sub.loc[0].at['latitude'], 'lon':df_sub.loc[0].at['longitude']},
+        zoom = 12)
+    return fig
 
-    return dcc.Graph(figure=fig)
+# Scatter plot callback:
 
 @app.callback(
     Output('scatter_plot', 'figure'),
@@ -118,6 +207,8 @@ def update_scatter(district):
     fig_2.update_layout(title="Price and Review Score Comparison")
     return fig_2
 
+# Heatmap callback:
+
 @app.callback(
     Output('heatmap', 'figure'),
     Input('district_dropdown', 'value')
@@ -133,13 +224,37 @@ def update_heatmap(district):
 
     return fig_3
 
-# @app.callback(
-#     Output('quarter', 'figure'),
-#     Input('district_dropdown', 'value'),
-#     Input('quarter_drop', 'value')
-# )
-# def update_quarter(district, quarter):
-#     df_sub = df[(df.neighbourhood == district] 
+# Review scattters callback:
+
+@app.callback(
+    Output('sep_scatter', 'figure'),
+    Output('jun_scatter', 'figure'),
+    Output('mar_scatter', 'figure'),
+    Output('dec_scatter', 'figure'),
+    Input('district_dropdown', 'value')
+)
+def update_quarter(district):
+    df_sub2 = df[(df.neighbourhood == district)]
+
+    fig_4 = px.scatter(df_sub2,
+    x = df_sub2['sep_price'],
+    y = df_sub2['sep_number_of_reviews'])
+
+    fig_5 = px.scatter(df_sub2,
+    x = df_sub2['jun_price'],
+    y = df_sub2['jun_number_of_reviews'])
+
+    fig_6 = px.scatter(df_sub2,
+    x = df_sub2['mar_price'],
+    y = df_sub2['mar_number_of_reviews'])
+
+    fig_7 = px.scatter(df_sub2,
+    x = df_sub2['dec_price'],
+    y = df_sub2['dec_number_of_reviews'])
+
+    return fig_4, fig_5, fig_6, fig_7
+
+
 
 # Run app
 if __name__=='__main__':
