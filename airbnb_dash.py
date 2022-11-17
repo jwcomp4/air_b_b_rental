@@ -74,7 +74,7 @@ card_review_scatter = dbc.Card(
     [
     dbc.CardBody(
         [
-        html.H6("Heatmap of Bedroom Count and Review Score", className='card-title'),
+        html.H6("Scatter Plot of Price and Review Score", className='card-title'),
         dcc.Graph(id='scatter_plot', figure={})
         ]
     )
