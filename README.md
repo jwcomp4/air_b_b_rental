@@ -39,3 +39,11 @@ Our data came from [Inside Airbnb](http://insideairbnb.com/get-the-data/)
 
 ## Segment Tasks
 Please review each segment file in the presentation branch to see the breakdown duties for each team member. 
+
+#### Presentation Slides and Notes
+
+- The entire team worked collaboratively to build out a Google Slides presentation and contributed to presentation notes in a shared Google Doc.
+    + [Google Slides](https://docs.google.com/presentation/d/16zG_EPTuuSO48N9Z6VpkpfcytJn2C5iFtrvlYHpwWL8/edit?usp=sharing)
+    + [Google Doc Presentation Notes](https://docs.google.com/document/d/1OhWJUSvwuF-P2b4EUWFntwLq1iMQl8G1a6Fk_Dr6u7E/edit)
+
+- The entire team met outside of class time to rehearse the presentation.
